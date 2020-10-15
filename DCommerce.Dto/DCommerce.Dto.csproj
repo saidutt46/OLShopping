@@ -10,11 +10,9 @@
     <Folder Include="Requests\" />
     <Folder Include="Requests\Category\" />
     <Folder Include="Requests\Product\" />
-    <Folder Include="Requests\Register\" />
-    <Folder Include="Requests\Login\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="10.1.0" />
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DCommerce.Data\DCommerce.Data.csproj" />
