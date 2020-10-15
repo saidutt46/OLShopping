@@ -21,6 +21,7 @@ namespace DCommerce.Dto.Shared
                            opt => opt.MapFrom(src => src.UnitOfMeasurement.ToDescriptionString()));
             CreateMap<ProductCreateRequest, Product>();
             CreateMap<ProductUpdateRequest, Product>();
+            CreateMap<ApplicationUser, UserProfileDto>();
         }
     }
 }

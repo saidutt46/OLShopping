@@ -1,14 +1,12 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Identity;
-
-namespace DCommerce.Data.Domain
+namespace DCommerce.Dto.Responses
 {
-    public class ApplicationUser : IdentityUser
+    public class UserProfileDto
     {
-        [Required]
+        public Guid Id { get; set; }
+        public string Email { get; set; }
+        public string UserName { get; set; }
         public string FirstName { get; set; }
-        [Required]
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int Gender { get; set; }

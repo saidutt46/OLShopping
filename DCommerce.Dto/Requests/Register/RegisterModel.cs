@@ -14,5 +14,14 @@ namespace DCommerce.Dto.Requests.Register
 
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
+
+        [Required(ErrorMessage = "Firstname is required")]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Lastname is required")]
+        public string LastName { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public int Gender { get; set; }
+        public int ColorTheme { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using DCommerce.Repository.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DCommerce.Repository.Migrations
 {
     [DbContext(typeof(DCommerceContext))]
-    partial class DCommerceContextModelSnapshot : ModelSnapshot
+    [Migration("20201015045638_identity_update1")]
+    partial class identity_update1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
