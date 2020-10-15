@@ -3,11 +3,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using DCommerce.Data.Domain;
 using DCommerce.Data.Shared;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DCommerce.Repository.DatabaseContext
 {
-    public class DCommerceContext : DbContext
+    public class DCommerceContext : IdentityDbContext<ApplicationUser>
     {
         public DCommerceContext(DbContextOptions<DCommerceContext> options) : base(options)
         {
@@ -15,6 +16,7 @@ namespace DCommerce.Repository.DatabaseContext
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
             builder.Entity<Category>().HasKey("Id");
             builder.Entity<Category>().HasMany(p => p.Products).WithOne(e => e.Category);
             builder.Entity<Category>().Property(p => p.Name).IsRequired();
