@@ -12,6 +12,7 @@
     <Folder Include="Requests\Product\" />
     <Folder Include="Requests\Register\" />
     <Folder Include="Requests\Login\" />
+    <Folder Include="Requests\AddToCart\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.0" />

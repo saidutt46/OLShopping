@@ -27,10 +27,15 @@ namespace DCommerce.Repository.DatabaseContext
             builder.Entity<Product>().Property(p => p.Description).HasDefaultValue<string>("No Description available");
             builder.Entity<Product>().Property(p => p.QuantityInPackage).HasDefaultValue<short>(1).IsRequired();
             builder.Entity<Product>().Property(p => p.UnitPrice).IsRequired();
+
+            builder.Entity<CartItem>().HasKey("Id");
+            builder.Entity<CartItem>().HasOne(p => p.Product);
+            builder.Entity<CartItem>().Property(p => p.Quantity).HasDefaultValue(1);
         }
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
 
         public override int SaveChanges()
         {
