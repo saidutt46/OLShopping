@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using AutoMapper;
-using DCommerce.Data.Domain;
-using DCommerce.Dto.Requests.Category;
-using DCommerce.Dto.Shared;
+using DCommerce.Dto.Requests.AddToCart;
 using DCommerce.Service.Interfaces;
 using DCommerce.WebApi.Extensions;
 using Microsoft.AspNetCore.Mvc;
@@ -12,39 +8,43 @@ using Microsoft.AspNetCore.Mvc;
 namespace DCommerce.WebApi.Controllers
 {
     [Route("/api/[controller]")]
-    public class CategoriesController : Controller
+    public class ShoppingCartController : Controller
     {
-        private readonly ICategoryService _categoryService;
+        private readonly ICartItemService _cartItemService;
 
-        public CategoriesController(ICategoryService categoryService)
+        public ShoppingCartController(ICartItemService cartItemService)
         {
-            _categoryService = categoryService;
+            _cartItemService = cartItemService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllAsync()
-        {
-            try
-            {
-                var response = await _categoryService.ListAsync();
-                return Ok(response);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
-        }
-
-        [HttpGet]
-        [Route("{id}")]
-        public async Task<IActionResult> GetCategory(Guid id)
+        [Route("user/{id}")]
+        public async Task<IActionResult> GetByUserId(string id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
 
             try
             {
-                var response = await _categoryService.GetById(id);
+                var response = await _cartItemService.ListAllByUserId(id);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<IActionResult> GetByCartId(Guid id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState.GetErrorMessages());
+
+            try
+            {
+                var response = await _cartItemService.GetById(id);
                 return Ok(response);
             }
             catch (Exception ex)
@@ -55,13 +55,13 @@ namespace DCommerce.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CategoryCreateRequest request)
+        public async Task<IActionResult> Create([FromBody] AddToCartRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
             try
             {
-                var response = await _categoryService.Add(request);
+                var response = await _cartItemService.Add(request);
                 return Ok(response);
             }
             catch (Exception ex)
@@ -71,13 +71,13 @@ namespace DCommerce.WebApi.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(Guid id, [FromBody] CategoryUpdateRequest request)
+        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateCartRequest request)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
             try
             {
-                var response = await _categoryService.Update(id, request);
+                var response = await _cartItemService.Update(id, request);
                 return Ok(response);
             }
             catch (Exception ex)
@@ -93,7 +93,7 @@ namespace DCommerce.WebApi.Controllers
                 return BadRequest(ModelState.GetErrorMessages());
             try
             {
-                var response = await _categoryService.Delete(id);
+                var response = await _cartItemService.Delete(id);
                 return Ok(response);
             }
             catch (Exception ex)

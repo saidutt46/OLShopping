@@ -31,6 +31,10 @@ namespace DCommerce.Repository.DatabaseContext
             builder.Entity<CartItem>().HasKey("Id");
             builder.Entity<CartItem>().HasOne(p => p.Product);
             builder.Entity<CartItem>().Property(p => p.Quantity).HasDefaultValue(1);
+            builder.Entity<CartItem>().HasOne(p => p.User).WithMany(e => e.CartItems).OnDelete(DeleteBehavior.ClientCascade).
+                HasForeignKey(p => p.IdentityId);
+
+            builder.Entity<ApplicationUser>().HasMany(e => e.CartItems).WithOne(p => p.User);
         }
 
         public DbSet<Category> Categories { get; set; }

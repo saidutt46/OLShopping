@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AutoMapper;
 using DCommerce.Data.Domain;
+using DCommerce.Dto.Requests.AddToCart;
 using DCommerce.Dto.Requests.Category;
 using DCommerce.Dto.Requests.Product;
 using DCommerce.Dto.Responses;
@@ -22,6 +23,9 @@ namespace DCommerce.Dto.Shared
             CreateMap<ProductCreateRequest, Product>();
             CreateMap<ProductUpdateRequest, Product>();
             CreateMap<ApplicationUser, UserProfileDto>();
+            CreateMap<CartItem, AddToCartDto>();
+            CreateMap<AddToCartRequest, CartItem>();
+            CreateMap<UpdateCartRequest, CartItem>();
         }
     }
 }
