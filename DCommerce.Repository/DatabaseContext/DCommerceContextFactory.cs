@@ -1,5 +1,4 @@
-﻿using System;
-using DCommerce.Repository.Shared;
+﻿using DCommerce.Repository.Shared;
 using Microsoft.EntityFrameworkCore;
 
 namespace DCommerce.Repository.DatabaseContext

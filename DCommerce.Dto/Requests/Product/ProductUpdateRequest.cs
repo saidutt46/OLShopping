@@ -12,7 +12,7 @@ namespace DCommerce.Dto.Requests.Product
         public int QuantityInPackage { get; set; }
         public string UnitOfMeasurement { get; set; }
         public string ImagePath { get; set; }
-        public double? UnitPrice { get; set; }
+        public double UnitPrice { get; set; }
 
         public virtual Guid CategoryId { get; set; }
     }
