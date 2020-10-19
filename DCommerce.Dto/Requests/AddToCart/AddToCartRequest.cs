@@ -9,7 +9,7 @@ namespace DCommerce.Dto.Requests.AddToCart
         public Guid ProductId { get; set; }
         [Required(ErrorMessage = "User Id is required when adding items to Cart")]
         public string IdentityId { get; set; }
-        [Required(ErrorMessage = "User Id is required when adding items to Cart")]
+        [Required(ErrorMessage = "Quantity is required when adding items to Cart")]
         public int Quantity { get; set; }
     }
 }

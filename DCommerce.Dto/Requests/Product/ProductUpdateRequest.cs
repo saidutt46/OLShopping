@@ -11,7 +11,6 @@ namespace DCommerce.Dto.Requests.Product
         public string Description { get; set; }
         public int QuantityInPackage { get; set; }
         public string UnitOfMeasurement { get; set; }
-        public string ImagePath { get; set; }
         public double UnitPrice { get; set; }
 
         public virtual Guid CategoryId { get; set; }

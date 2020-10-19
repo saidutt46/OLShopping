@@ -13,7 +13,6 @@ namespace DCommerce.Dto.Requests.Product
         public short QuantityInPackage { get; set; }
         [Required]
         public string UnitOfMeasurement { get; set; }
-        public string ImagePath { get; set; }
         [Required]
         public double? UnitPrice { get; set; }
 

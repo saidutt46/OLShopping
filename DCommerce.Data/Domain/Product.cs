@@ -11,7 +11,6 @@ namespace DCommerce.Data.Domain
         public string Description { get; set; }
         public short QuantityInPackage { get; set; }
         public EUnitOfMeasurement UnitOfMeasurement { get; set; }
-        public string ImagePath { get; set; }
         public double UnitPrice { get; set; }
 
         public Guid CategoryId { get; set; }
